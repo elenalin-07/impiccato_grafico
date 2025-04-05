@@ -1,0 +1,17 @@
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\bin\Debug\net8.0-windows\impiccato_grafic.exe
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\bin\Debug\net8.0-windows\impiccato_grafic.deps.json
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\bin\Debug\net8.0-windows\impiccato_grafic.runtimeconfig.json
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\bin\Debug\net8.0-windows\impiccato_grafic.dll
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\bin\Debug\net8.0-windows\impiccato_grafic.pdb
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.Form1.resources
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.csproj.GenerateResource.cache
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.AssemblyInfoInputs.cache
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.AssemblyInfo.cs
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.csproj.CoreCompileInputs.cache
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.sourcelink.json
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.dll
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\refint\impiccato_grafic.dll
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.pdb
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\impiccato_grafic.genruntimeconfig.cache
+C:\Users\zxt02\Documents\inf\GitHub\impiccato_grafico\impiccato_grafic\obj\Debug\net8.0-windows\ref\impiccato_grafic.dll
