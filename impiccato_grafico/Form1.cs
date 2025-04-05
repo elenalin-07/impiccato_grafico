@@ -9,7 +9,7 @@ namespace impiccato_grafico
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            CheckBox[] tema = { ckbAnimal, ckbObject, ckbPaese, ckbPiante };
+            CheckBox[] tema = { ckbAnimal, ckbObject, ckbPaese, ckbPaese };
             CheckBox[] difficolta = { ckbEasy, ckbNormal, ckbDifficult };
 
             int tema_scelta = 0;
@@ -17,7 +17,7 @@ namespace impiccato_grafico
             bool checkTema = false;
             bool checkDifficult = false;
 
-            while(!checkTema)
+            while (!checkTema)
             {
                 tema_scelta = scelta(tema);
 
@@ -73,5 +73,6 @@ namespace impiccato_grafico
             }
             return 0;
         }
+
     }
 }

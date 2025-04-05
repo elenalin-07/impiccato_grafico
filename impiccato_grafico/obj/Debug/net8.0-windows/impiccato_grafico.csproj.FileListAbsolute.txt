@@ -14,3 +14,20 @@ C:\Users\lin.elena\source\repos\impiccato_grafico\impiccato_grafico\obj\Debug\ne
 C:\Users\lin.elena\source\repos\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.pdb
 C:\Users\lin.elena\source\repos\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.genruntimeconfig.cache
 C:\Users\lin.elena\source\repos\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\ref\impiccato_grafico.dll
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\bin\Debug\net8.0-windows\impiccato_grafico.exe
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\bin\Debug\net8.0-windows\impiccato_grafico.deps.json
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\bin\Debug\net8.0-windows\impiccato_grafico.runtimeconfig.json
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\bin\Debug\net8.0-windows\impiccato_grafico.dll
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\bin\Debug\net8.0-windows\impiccato_grafico.pdb
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.Form1.resources
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.csproj.GenerateResource.cache
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.AssemblyInfoInputs.cache
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.AssemblyInfo.cs
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.csproj.CoreCompileInputs.cache
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.sourcelink.json
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.dll
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\refint\impiccato_grafico.dll
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.pdb
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\impiccato_grafico.genruntimeconfig.cache
+C:\Users\lin.elena\Documents\Git Hub\impiccato_grafico\impiccato_grafico\obj\Debug\net8.0-windows\ref\impiccato_grafico.dll

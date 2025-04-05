@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             lblTitle = new Label();
-            ckbAnimal = new CheckBox();
             lblTema = new Label();
-            ckbObject = new CheckBox();
-            ckbPaese = new CheckBox();
-            ckbPiante = new CheckBox();
-            ckbDifficult = new CheckBox();
-            ckbNormal = new CheckBox();
             label1 = new Label();
-            ckbEasy = new CheckBox();
             btnStart = new Button();
             lblIntroduction = new Label();
             label2 = new Label();
             lblError_scelta = new Label();
+            Animale = new Button();
+            Oggetto = new Button();
+            Paese = new Button();
+            Piante = new Button();
+            Difficile = new Button();
+            Normale = new Button();
+            Facile = new Button();
             SuspendLayout();
             // 
             // lblTitle
@@ -55,16 +55,6 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Impiccato";
             // 
-            // ckbAnimal
-            // 
-            ckbAnimal.AutoSize = true;
-            ckbAnimal.Location = new Point(214, 234);
-            ckbAnimal.Name = "ckbAnimal";
-            ckbAnimal.Size = new Size(70, 19);
-            ckbAnimal.TabIndex = 1;
-            ckbAnimal.Text = "Animale";
-            ckbAnimal.UseVisualStyleBackColor = true;
-            // 
             // lblTema
             // 
             lblTema.AutoSize = true;
@@ -75,56 +65,6 @@
             lblTema.TabIndex = 2;
             lblTema.Text = "Scegli una tema";
             // 
-            // ckbObject
-            // 
-            ckbObject.AutoSize = true;
-            ckbObject.Location = new Point(214, 271);
-            ckbObject.Name = "ckbObject";
-            ckbObject.Size = new Size(70, 19);
-            ckbObject.TabIndex = 3;
-            ckbObject.Text = "Oggetto";
-            ckbObject.UseVisualStyleBackColor = true;
-            // 
-            // ckbPaese
-            // 
-            ckbPaese.AutoSize = true;
-            ckbPaese.Location = new Point(214, 312);
-            ckbPaese.Name = "ckbPaese";
-            ckbPaese.Size = new Size(56, 19);
-            ckbPaese.TabIndex = 4;
-            ckbPaese.Text = "Paese";
-            ckbPaese.UseVisualStyleBackColor = true;
-            // 
-            // ckbPiante
-            // 
-            ckbPiante.AutoSize = true;
-            ckbPiante.Location = new Point(214, 352);
-            ckbPiante.Name = "ckbPiante";
-            ckbPiante.Size = new Size(59, 19);
-            ckbPiante.TabIndex = 5;
-            ckbPiante.Text = "Piante";
-            ckbPiante.UseVisualStyleBackColor = true;
-            // 
-            // ckbDifficult
-            // 
-            ckbDifficult.AutoSize = true;
-            ckbDifficult.Location = new Point(508, 352);
-            ckbDifficult.Name = "ckbDifficult";
-            ckbDifficult.Size = new Size(66, 19);
-            ckbDifficult.TabIndex = 9;
-            ckbDifficult.Text = "Difficile";
-            ckbDifficult.UseVisualStyleBackColor = true;
-            // 
-            // ckbNormal
-            // 
-            ckbNormal.AutoSize = true;
-            ckbNormal.Location = new Point(508, 291);
-            ckbNormal.Name = "ckbNormal";
-            ckbNormal.Size = new Size(72, 19);
-            ckbNormal.TabIndex = 8;
-            ckbNormal.Text = "Normale";
-            ckbNormal.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -134,16 +74,6 @@
             label1.Size = new Size(160, 17);
             label1.TabIndex = 7;
             label1.Text = "Scegli una difficoltà";
-            // 
-            // ckbEasy
-            // 
-            ckbEasy.AutoSize = true;
-            ckbEasy.Location = new Point(508, 234);
-            ckbEasy.Name = "ckbEasy";
-            ckbEasy.Size = new Size(56, 19);
-            ckbEasy.TabIndex = 6;
-            ckbEasy.Text = "Facile";
-            ckbEasy.UseVisualStyleBackColor = true;
             // 
             // btnStart
             // 
@@ -193,25 +123,88 @@
             lblError_scelta.Text = "Per favore, scegli solo una tema o una difficoltà";
             lblError_scelta.Visible = false;
             // 
+            // Animale
+            // 
+            Animale.Location = new Point(216, 235);
+            Animale.Name = "Animale";
+            Animale.Size = new Size(75, 23);
+            Animale.TabIndex = 14;
+            Animale.Text = "Animale";
+            Animale.UseVisualStyleBackColor = true;
+            // 
+            // Oggetto
+            // 
+            Oggetto.Location = new Point(216, 264);
+            Oggetto.Name = "Oggetto";
+            Oggetto.Size = new Size(75, 23);
+            Oggetto.TabIndex = 15;
+            Oggetto.Text = "Oggetto";
+            Oggetto.UseVisualStyleBackColor = true;
+            // 
+            // Paese
+            // 
+            Paese.Location = new Point(216, 293);
+            Paese.Name = "Paese";
+            Paese.Size = new Size(75, 23);
+            Paese.TabIndex = 16;
+            Paese.Text = "Paese";
+            Paese.UseVisualStyleBackColor = true;
+            // 
+            // Piante
+            // 
+            Piante.Location = new Point(218, 322);
+            Piante.Name = "Piante";
+            Piante.Size = new Size(75, 23);
+            Piante.TabIndex = 17;
+            Piante.Text = "Piante";
+            Piante.UseVisualStyleBackColor = true;
+            // 
+            // Difficile
+            // 
+            Difficile.Location = new Point(496, 322);
+            Difficile.Name = "Difficile";
+            Difficile.Size = new Size(75, 23);
+            Difficile.TabIndex = 20;
+            Difficile.Text = "Difficile";
+            Difficile.UseVisualStyleBackColor = true;
+            // 
+            // Normale
+            // 
+            Normale.Location = new Point(496, 279);
+            Normale.Name = "Normale";
+            Normale.Size = new Size(75, 23);
+            Normale.TabIndex = 19;
+            Normale.Text = "Normale";
+            Normale.UseVisualStyleBackColor = true;
+            // 
+            // Facile
+            // 
+            Facile.Location = new Point(496, 235);
+            Facile.Name = "Facile";
+            Facile.Size = new Size(75, 23);
+            Facile.TabIndex = 18;
+            Facile.Text = "Facile";
+            Facile.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(Difficile);
+            Controls.Add(Normale);
+            Controls.Add(Facile);
+            Controls.Add(Piante);
+            Controls.Add(Paese);
+            Controls.Add(Oggetto);
+            Controls.Add(Animale);
             Controls.Add(lblError_scelta);
             Controls.Add(label2);
             Controls.Add(lblIntroduction);
             Controls.Add(btnStart);
-            Controls.Add(ckbDifficult);
-            Controls.Add(ckbNormal);
             Controls.Add(label1);
-            Controls.Add(ckbEasy);
-            Controls.Add(ckbPiante);
-            Controls.Add(ckbPaese);
-            Controls.Add(ckbObject);
             Controls.Add(lblTema);
-            Controls.Add(ckbAnimal);
             Controls.Add(lblTitle);
             Name = "Form1";
             Text = "Form1";
@@ -222,18 +215,18 @@
         #endregion
 
         private Label lblTitle;
-        private CheckBox ckbAnimal;
         private Label lblTema;
-        private CheckBox ckbObject;
-        private CheckBox ckbPaese;
-        private CheckBox ckbPiante;
-        private CheckBox ckbDifficult;
-        private CheckBox ckbNormal;
         private Label label1;
-        private CheckBox ckbEasy;
         private Button btnStart;
         private Label lblIntroduction;
         private Label label2;
         private Label lblError_scelta;
+        private Button Animale;
+        private Button Oggetto;
+        private Button Paese;
+        private Button Piante;
+        private Button Difficile;
+        private Button Normale;
+        private Button Facile;
     }
 }

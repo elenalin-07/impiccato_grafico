@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("impiccato_grafico")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("impiccato_grafic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57ec9d1bd75e288f27895ea93d4d86d802092c6b")]
-[assembly: System.Reflection.AssemblyProductAttribute("impiccato_grafico")]
-[assembly: System.Reflection.AssemblyTitleAttribute("impiccato_grafico")]
+[assembly: System.Reflection.AssemblyProductAttribute("impiccato_grafic")]
+[assembly: System.Reflection.AssemblyTitleAttribute("impiccato_grafic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
