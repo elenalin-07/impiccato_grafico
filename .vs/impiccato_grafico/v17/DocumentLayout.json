@@ -32,9 +32,10 @@
               "RelativeDocumentMoniker": "impiccato_grafic\\Form1.cs",
               "ToolTip": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\Form1.cs",
               "RelativeToolTip": "impiccato_grafic\\Form1.cs",
-              "ViewState": "AgIAACcBAAAAAAAAAAAiwAgBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAawBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T13:23:03.246Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
@@ -45,7 +46,7 @@
               "RelativeDocumentMoniker": "impiccato_grafic\\Form1.Designer.cs",
               "ToolTip": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\Form1.Designer.cs",
               "RelativeToolTip": "impiccato_grafic\\Form1.Designer.cs",
-              "ViewState": "AgIAANACAAAAAAAAAAAIwNMCAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAHgBAAAAAAAAAAAswCEBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T13:23:14.3Z",
               "EditorCaption": ""
@@ -59,7 +60,8 @@
               "ToolTip": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\Form1.cs [Progettazione]",
               "RelativeToolTip": "impiccato_grafic\\Form1.cs [Progettazione]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T06:50:32.792Z"
+              "WhenOpened": "2025-04-05T06:50:32.792Z",
+              "EditorCaption": " [Progettazione]"
             }
           ]
         }

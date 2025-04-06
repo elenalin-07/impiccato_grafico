@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("impiccato_grafic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+971781aa636e4145ae3a983e9a3e50ca62289a6e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d81069b05abd7fb79d4d22269a4e7798f57ede16")]
 [assembly: System.Reflection.AssemblyProductAttribute("impiccato_grafic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("impiccato_grafic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

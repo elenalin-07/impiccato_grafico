@@ -73,6 +73,21 @@
             btnZ = new Button();
             btnY = new Button();
             lblErrore_TemaDiff = new Label();
+            lblTicchetta_lettere = new Label();
+            lblLettere_provate = new Label();
+            lblTicchetta_Tentativi = new Label();
+            lblTentativi = new Label();
+            btnNo = new Button();
+            btnSi = new Button();
+            lblDomanda_continua = new Label();
+            btnPC_no = new Button();
+            btnPC_si = new Button();
+            lblParola_completa = new Label();
+            lblTicchetta_parola_inserito = new Label();
+            btnParola_inserita = new Button();
+            tbxParola_inserita = new TextBox();
+            lbxParole_non_indovinate = new ListBox();
+            lbxParole_indovinate = new ListBox();
             SuspendLayout();
             // 
             // lblTitle
@@ -251,13 +266,13 @@
             // 
             lblRis_lettera_inserita.AutoSize = true;
             lblRis_lettera_inserita.BorderStyle = BorderStyle.FixedSingle;
-            lblRis_lettera_inserita.Location = new Point(312, 286);
-            lblRis_lettera_inserita.MaximumSize = new Size(320, 0);
-            lblRis_lettera_inserita.MinimumSize = new Size(320, 0);
+            lblRis_lettera_inserita.Location = new Point(226, 282);
+            lblRis_lettera_inserita.MaximumSize = new Size(500, 0);
+            lblRis_lettera_inserita.MinimumSize = new Size(500, 0);
             lblRis_lettera_inserita.Name = "lblRis_lettera_inserita";
-            lblRis_lettera_inserita.Size = new Size(320, 22);
+            lblRis_lettera_inserita.Size = new Size(500, 62);
             lblRis_lettera_inserita.TabIndex = 23;
-            lblRis_lettera_inserita.Text = "Oops! La lettera che hai scelto non è corretta.";
+            lblRis_lettera_inserita.Text = "Oops! La parola che hai provato non è corretta. Non preoccuparti, puoi continuare a giocare! Prova a indovinare un’altra lettera o riprova a indovinare la parola!";
             lblRis_lettera_inserita.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnA
@@ -662,12 +677,188 @@
             lblErrore_TemaDiff.Text = "Per favore scegli una tema e/o una difficoltà";
             lblErrore_TemaDiff.Visible = false;
             // 
+            // lblTicchetta_lettere
+            // 
+            lblTicchetta_lettere.AutoSize = true;
+            lblTicchetta_lettere.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTicchetta_lettere.Location = new Point(23, 415);
+            lblTicchetta_lettere.Name = "lblTicchetta_lettere";
+            lblTicchetta_lettere.Size = new Size(149, 20);
+            lblTicchetta_lettere.TabIndex = 78;
+            lblTicchetta_lettere.Text = "Lettere provate:";
+            // 
+            // lblLettere_provate
+            // 
+            lblLettere_provate.AutoSize = true;
+            lblLettere_provate.BackColor = SystemColors.Control;
+            lblLettere_provate.BorderStyle = BorderStyle.Fixed3D;
+            lblLettere_provate.Location = new Point(12, 451);
+            lblLettere_provate.MaximumSize = new Size(170, 50);
+            lblLettere_provate.MinimumSize = new Size(170, 50);
+            lblLettere_provate.Name = "lblLettere_provate";
+            lblLettere_provate.Size = new Size(170, 50);
+            lblLettere_provate.TabIndex = 79;
+            lblLettere_provate.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblTicchetta_Tentativi
+            // 
+            lblTicchetta_Tentativi.AutoSize = true;
+            lblTicchetta_Tentativi.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTicchetta_Tentativi.Location = new Point(691, 86);
+            lblTicchetta_Tentativi.Name = "lblTicchetta_Tentativi";
+            lblTicchetta_Tentativi.Size = new Size(170, 21);
+            lblTicchetta_Tentativi.TabIndex = 80;
+            lblTicchetta_Tentativi.Text = "Tentativi rimasti:";
+            // 
+            // lblTentativi
+            // 
+            lblTentativi.AutoSize = true;
+            lblTentativi.BackColor = SystemColors.Control;
+            lblTentativi.BorderStyle = BorderStyle.Fixed3D;
+            lblTentativi.Location = new Point(865, 84);
+            lblTentativi.MinimumSize = new Size(22, 22);
+            lblTentativi.Name = "lblTentativi";
+            lblTentativi.Size = new Size(22, 22);
+            lblTentativi.TabIndex = 81;
+            lblTentativi.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnNo
+            // 
+            btnNo.BackColor = Color.LightSkyBlue;
+            btnNo.Font = new Font("Cooper Black", 12F);
+            btnNo.Location = new Point(517, 304);
+            btnNo.Name = "btnNo";
+            btnNo.Size = new Size(143, 64);
+            btnNo.TabIndex = 84;
+            btnNo.Text = "NO";
+            btnNo.UseVisualStyleBackColor = false;
+            btnNo.Click += btnNo_Click;
+            // 
+            // btnSi
+            // 
+            btnSi.BackColor = Color.LightSkyBlue;
+            btnSi.Font = new Font("Cooper Black", 12F);
+            btnSi.Location = new Point(276, 304);
+            btnSi.Name = "btnSi";
+            btnSi.Size = new Size(143, 64);
+            btnSi.TabIndex = 83;
+            btnSi.Text = "SI";
+            btnSi.UseVisualStyleBackColor = false;
+            // 
+            // lblDomanda_continua
+            // 
+            lblDomanda_continua.AutoSize = true;
+            lblDomanda_continua.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDomanda_continua.Location = new Point(233, 233);
+            lblDomanda_continua.Name = "lblDomanda_continua";
+            lblDomanda_continua.Size = new Size(472, 23);
+            lblDomanda_continua.TabIndex = 82;
+            lblDomanda_continua.Text = "Vuoi provare di nuovo con una nuova parola?";
+            lblDomanda_continua.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnPC_no
+            // 
+            btnPC_no.BackColor = Color.LightSkyBlue;
+            btnPC_no.Font = new Font("Cooper Black", 12F);
+            btnPC_no.Location = new Point(535, 461);
+            btnPC_no.Name = "btnPC_no";
+            btnPC_no.Size = new Size(95, 43);
+            btnPC_no.TabIndex = 87;
+            btnPC_no.Text = "NO";
+            btnPC_no.UseVisualStyleBackColor = false;
+            // 
+            // btnPC_si
+            // 
+            btnPC_si.BackColor = Color.LightSkyBlue;
+            btnPC_si.Font = new Font("Cooper Black", 12F);
+            btnPC_si.Location = new Point(296, 461);
+            btnPC_si.Name = "btnPC_si";
+            btnPC_si.Size = new Size(95, 43);
+            btnPC_si.TabIndex = 86;
+            btnPC_si.Text = "SI";
+            btnPC_si.UseVisualStyleBackColor = false;
+            btnPC_si.Click += btnPC_si_Click;
+            // 
+            // lblParola_completa
+            // 
+            lblParola_completa.AutoSize = true;
+            lblParola_completa.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblParola_completa.Location = new Point(246, 389);
+            lblParola_completa.Name = "lblParola_completa";
+            lblParola_completa.Size = new Size(449, 23);
+            lblParola_completa.TabIndex = 85;
+            lblParola_completa.Text = "Sei pronto a indovinare la parola completa?";
+            lblParola_completa.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblTicchetta_parola_inserito
+            // 
+            lblTicchetta_parola_inserito.AutoSize = true;
+            lblTicchetta_parola_inserito.Location = new Point(202, 425);
+            lblTicchetta_parola_inserito.Name = "lblTicchetta_parola_inserito";
+            lblTicchetta_parola_inserito.Size = new Size(548, 20);
+            lblTicchetta_parola_inserito.TabIndex = 90;
+            lblTicchetta_parola_inserito.Text = "Perfetto! Hai deciso di provarci. Scrivi la tua risposta e vediamo se hai indovinato!";
+            // 
+            // btnParola_inserita
+            // 
+            btnParola_inserita.BackColor = Color.SteelBlue;
+            btnParola_inserita.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnParola_inserita.ForeColor = Color.White;
+            btnParola_inserita.Location = new Point(496, 467);
+            btnParola_inserita.Name = "btnParola_inserita";
+            btnParola_inserita.Size = new Size(94, 29);
+            btnParola_inserita.TabIndex = 89;
+            btnParola_inserita.Text = "OK";
+            btnParola_inserita.UseVisualStyleBackColor = false;
+            // 
+            // tbxParola_inserita
+            // 
+            tbxParola_inserita.Location = new Point(346, 469);
+            tbxParola_inserita.Name = "tbxParola_inserita";
+            tbxParola_inserita.Size = new Size(125, 27);
+            tbxParola_inserita.TabIndex = 88;
+            // 
+            // lbxParole_non_indovinate
+            // 
+            lbxParole_non_indovinate.Font = new Font("Cooper Black", 10.2F);
+            lbxParole_non_indovinate.FormattingEnabled = true;
+            lbxParole_non_indovinate.Items.AddRange(new object[] { "Parole non indovinate:" });
+            lbxParole_non_indovinate.Location = new Point(563, 193);
+            lbxParole_non_indovinate.Name = "lbxParole_non_indovinate";
+            lbxParole_non_indovinate.Size = new Size(209, 184);
+            lbxParole_non_indovinate.TabIndex = 92;
+            // 
+            // lbxParole_indovinate
+            // 
+            lbxParole_indovinate.Font = new Font("Cooper Black", 10.2F);
+            lbxParole_indovinate.FormattingEnabled = true;
+            lbxParole_indovinate.Items.AddRange(new object[] { "Parole indovinate:" });
+            lbxParole_indovinate.Location = new Point(164, 193);
+            lbxParole_indovinate.Name = "lbxParole_indovinate";
+            lbxParole_indovinate.Size = new Size(209, 184);
+            lbxParole_indovinate.TabIndex = 91;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(914, 600);
+            Controls.Add(lbxParole_non_indovinate);
+            Controls.Add(lbxParole_indovinate);
+            Controls.Add(lblTicchetta_parola_inserito);
+            Controls.Add(btnParola_inserita);
+            Controls.Add(tbxParola_inserita);
+            Controls.Add(btnPC_no);
+            Controls.Add(btnPC_si);
+            Controls.Add(lblParola_completa);
+            Controls.Add(btnNo);
+            Controls.Add(btnSi);
+            Controls.Add(lblDomanda_continua);
+            Controls.Add(lblTentativi);
+            Controls.Add(lblTicchetta_Tentativi);
+            Controls.Add(lblLettere_provate);
+            Controls.Add(lblTicchetta_lettere);
             Controls.Add(lblErrore_TemaDiff);
             Controls.Add(btnOk);
             Controls.Add(btnZ);
@@ -765,5 +956,20 @@
         private Button btnZ;
         private Button btnY;
         private Label lblErrore_TemaDiff;
+        private Label lblTicchetta_lettere;
+        private Label lblLettere_provate;
+        private Label lblTicchetta_Tentativi;
+        private Label lblTentativi;
+        private Button btnNo;
+        private Button btnSi;
+        private Label lblDomanda_continua;
+        private Button btnPC_no;
+        private Button btnPC_si;
+        private Label lblParola_completa;
+        private Label lblTicchetta_parola_inserito;
+        private Button btnParola_inserita;
+        private TextBox tbxParola_inserita;
+        private ListBox lbxParole_non_indovinate;
+        private ListBox lbxParole_indovinate;
     }
 }
