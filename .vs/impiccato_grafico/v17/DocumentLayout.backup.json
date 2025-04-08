@@ -1,18 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\",
+  "WorkspaceRootPath": "C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|c:\\users\\zxt02\\documents\\inf\\github\\impiccato_grafico\\impiccato_grafic\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\impiccato_grafic\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|solutionrelative:impiccato_grafic\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|c:\\users\\lin.elena\\documents\\git hub\\impiccato_grafico\\impiccato_grafic\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|solutionrelative:impiccato_grafic\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|c:\\users\\zxt02\\documents\\inf\\github\\impiccato_grafico\\impiccato_grafic\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|solutionrelative:impiccato_grafic\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|c:\\users\\lin.elena\\documents\\git hub\\impiccato_grafico\\impiccato_grafic\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|solutionrelative:impiccato_grafic\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|solutionrelative:impiccato_grafic\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|c:\\users\\lin.elena\\documents\\git hub\\impiccato_grafico\\impiccato_grafic\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2555078-B0D4-4ED5-B5DF-E056D3B77386}|impiccato_grafic\\impiccato_grafic.csproj|solutionrelative:impiccato_grafic\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\impiccato_grafic\\Form1.cs",
               "RelativeDocumentMoniker": "impiccato_grafic\\Form1.cs",
-              "ToolTip": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\Form1.cs",
+              "ToolTip": "C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\impiccato_grafic\\Form1.cs",
               "RelativeToolTip": "impiccato_grafic\\Form1.cs",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAawBAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALIAAAAAAAAAAAAYwIUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T13:23:03.246Z",
               "IsPinned": true,
@@ -40,24 +44,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\impiccato_grafic\\Program.cs",
+              "RelativeDocumentMoniker": "impiccato_grafic\\Program.cs",
+              "ToolTip": "C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\impiccato_grafic\\Program.cs",
+              "RelativeToolTip": "impiccato_grafic\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T11:02:48.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\impiccato_grafic\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "impiccato_grafic\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\impiccato_grafic\\Form1.Designer.cs",
               "RelativeToolTip": "impiccato_grafic\\Form1.Designer.cs",
-              "ViewState": "AgIAAHgBAAAAAAAAAAAswCEBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAL0DAAAAAAAAAAAAAIwAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T13:23:14.3Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [Progettazione]",
-              "DocumentMoniker": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\impiccato_grafic\\Form1.cs",
               "RelativeDocumentMoniker": "impiccato_grafic\\Form1.cs",
-              "ToolTip": "C:\\Users\\zxt02\\Documents\\inf\\GitHub\\impiccato_grafico\\impiccato_grafic\\Form1.cs [Progettazione]",
+              "ToolTip": "C:\\Users\\lin.elena\\Documents\\Git Hub\\impiccato_grafico\\impiccato_grafic\\Form1.cs [Progettazione]",
               "RelativeToolTip": "impiccato_grafic\\Form1.cs [Progettazione]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T06:50:32.792Z",

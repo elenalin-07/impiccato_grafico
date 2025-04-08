@@ -8,6 +8,7 @@ namespace impiccato_grafic
     {
         private GroupBox firstpag;
         private GroupBox secondpag;
+        private GroupBox il_gioco;
         private GroupBox thirdpag;
         private GroupBox tastiera;
         private GroupBox richiesta_indovina_parola;
@@ -27,18 +28,17 @@ namespace impiccato_grafic
 
         private void inizio()
         {
-            GroupBox firstpag = new GroupBox();
+            firstpag = new GroupBox();
             firstpag.Dock = DockStyle.Fill;
             firstpag.Controls.Add(lblIntro);
             firstpag.Controls.Add(lblTema);
             firstpag.Controls.Add(lblDifficult);
             firstpag.Controls.Add(ckbDifficult);
             firstpag.Controls.Add(ckbTema);
-            firstpag.Controls.Add(btnStart);
-
+            
             this.Controls.Add(firstpag);
 
-            GroupBox secondpag = new GroupBox();
+            secondpag = new GroupBox();
             secondpag.Dock = DockStyle.Fill;
             secondpag.Controls.Add(lblParola);
             secondpag.Controls.Add(lblTicchetta_monete);
@@ -53,19 +53,29 @@ namespace impiccato_grafic
             secondpag.Controls.Add(lblTicchetta_Tentativi);
             secondpag.Controls.Add(lblTentativi);
 
-            Button[] btn_lettere = { btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ };
-
-            for (int i = 0; i < btn_lettere.Length; i++)
-            {
-                secondpag.Controls.Add(btn_lettere[i]);
-            }
-
-            secondpag.Controls.Add(btnOk);
-            secondpag.Controls.Add(lblLettera_inserito);
-
             this.Controls.Add(secondpag);
 
-            GroupBox thirdpag = new GroupBox();
+
+            il_gioco = new GroupBox();
+            il_gioco.Dock = DockStyle.Fill;
+            il_gioco.Controls.Add(lblParola);
+            il_gioco.Controls.Add(lblTicchetta_monete);
+            il_gioco.Controls.Add(lblMonete);
+            il_gioco.Controls.Add(lblTicchetta_tema);
+            il_gioco.Controls.Add(lblTema_scelta);
+            il_gioco.Controls.Add(lblTcchetta_difficult);
+            il_gioco.Controls.Add(lblDifficult_scelta);
+            il_gioco.Controls.Add(lblRis_lettera_inserita);
+            il_gioco.Controls.Add(lblTicchetta_lettere);
+            il_gioco.Controls.Add(lblLettere_provate);
+            il_gioco.Controls.Add(lblTicchetta_Tentativi);
+            il_gioco.Controls.Add(lblTentativi);
+
+            this.Controls.Add(il_gioco);
+
+            Button[] btn_lettere = { btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ };
+
+            thirdpag = new GroupBox();
             thirdpag.Dock = DockStyle.Fill;
             thirdpag.Controls.Add(lblDomanda_continua);
             thirdpag.Controls.Add(btnSi);
@@ -73,9 +83,8 @@ namespace impiccato_grafic
 
             this.Controls.Add(thirdpag);
 
-            GroupBox tastiera = new GroupBox();
+            tastiera = new GroupBox();
             tastiera.Dock = DockStyle.Fill;
-
             for (int i = 0; i < btn_lettere.Length; i++)
             {
                 tastiera.Controls.Add(btn_lettere[i]);
@@ -86,7 +95,7 @@ namespace impiccato_grafic
 
             this.Controls.Add(tastiera);
 
-            GroupBox richiesta_indovina_parola = new GroupBox();
+            richiesta_indovina_parola = new GroupBox();
             richiesta_indovina_parola.Dock = DockStyle.Fill;
 
             richiesta_indovina_parola.Controls.Add(lblParola_completa);
@@ -95,7 +104,7 @@ namespace impiccato_grafic
 
             this.Controls.Add(richiesta_indovina_parola);
 
-            GroupBox parola_completa = new GroupBox();
+            parola_completa = new GroupBox();
             parola_completa.Dock = DockStyle.Fill;
 
             parola_completa.Controls.Add(lblTicchetta_parola_inserito);
@@ -104,7 +113,7 @@ namespace impiccato_grafic
 
             this.Controls.Add(parola_completa);
 
-            GroupBox fourthpag = new GroupBox();
+            fourthpag = new GroupBox();
             fourthpag.Dock = DockStyle.Fill;
 
             fourthpag.Controls.Add(lblDomanda_continua);
@@ -113,7 +122,7 @@ namespace impiccato_grafic
 
             this.Controls.Add(fourthpag);
 
-            GroupBox lastpag = new GroupBox();
+            lastpag = new GroupBox();
             lastpag.Dock = DockStyle.Fill;
 
             lastpag.Controls.Add(lbxParole_indovinate);
@@ -122,7 +131,6 @@ namespace impiccato_grafic
             this.Controls.Add(lastpag);
 
             firstpag.Visible = true;
-            secondpag.Visible = false;
             thirdpag.Visible = false;
             richiesta_indovina_parola.Visible = false;
             parola_completa.Visible = false;
@@ -182,6 +190,7 @@ namespace impiccato_grafic
                 secondpag.Visible = true;
                 tastiera.Visible = true;
                 lblErrore_TemaDiff.Visible = false;
+                btnStart.Visible = false;
 
                 gioco();
             }
@@ -360,8 +369,23 @@ namespace impiccato_grafic
 
                 string filePath = tema_scelta(tema);
                 string[] lines = File.ReadAllLines(filePath);
-                parole(lines, ref parola_scelte, ref num_tentativi, ref nm, tema);
-                parola = parola_casuale(parola_scelte, parole_uscite);
+
+            if (difficult.Contains("Facile"))
+            {
+                difficult = difficult.Substring(0, 6);
+            }
+            else if (difficult.Contains("Normale"))
+            {
+                difficult = difficult.Substring(0, 7);
+            }
+            else
+            {
+                difficult = difficult.Substring(0, 9);
+
+            }
+
+            parole(lines, ref parola_scelte, ref num_tentativi, ref nm, difficult);
+                parola = parola_casuale(random, parola_scelte, parole_uscite);
                 parola_segreta = parola_da_indovina(parola);
 
             lblTentativi.Text = num_tentativi.ToString();
@@ -554,17 +578,28 @@ namespace impiccato_grafic
 
             for (int i = a; i < b; i++)
             {
-                pd[c++] = p[i];
+                pd[c] = p[i];
+                c++;
             }
         }
 
-        private string parola_casuale(string[] parole, string[] parole_uscite)
+        private string parola_casuale(Random random, string[] parole, string[] parole_uscite)
         {
-            int posizione = random.Next(0, 20);
-            while (parole_uscite.Contains(parole[posizione]))
+            int posizione = -1;
+            bool trovato = false;
+            while(trovato == false)
             {
                 posizione = random.Next(0, 20);
+
+                for (int i = 0; i < parole_uscite.Length; i++)
+                {
+                    if (parole_uscite[i] == null || parole[posizione] != parole_uscite[i])
+                    {
+                        trovato = true;
+                    }
+                }
             }
+            
             return parole[posizione];
         }
 
