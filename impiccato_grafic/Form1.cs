@@ -7,13 +7,11 @@ namespace impiccato_grafic
     public partial class Form1 : Form
     {
         private GroupBox firstpag;
-        private GroupBox secondpag;
-        private GroupBox il_gioco;
+        private Label[] secondpag = new Label[12];
         private GroupBox thirdpag;
-        private GroupBox tastiera;
+        private Button[] btn_lettere = new Button[26];
         private GroupBox richiesta_indovina_parola;
         private GroupBox parola_completa;
-        private GroupBox fourthpag;
         private GroupBox lastpag;
 
         public Form1()
@@ -22,7 +20,7 @@ namespace impiccato_grafic
             inizio();
         }
 
-        char lettera;
+        char lettera, lettera_ins;
 
         Random random = new Random();
 
@@ -35,45 +33,22 @@ namespace impiccato_grafic
             firstpag.Controls.Add(lblDifficult);
             firstpag.Controls.Add(ckbDifficult);
             firstpag.Controls.Add(ckbTema);
-            
+
             this.Controls.Add(firstpag);
 
-            secondpag = new GroupBox();
-            secondpag.Dock = DockStyle.Fill;
-            secondpag.Controls.Add(lblParola);
-            secondpag.Controls.Add(lblTicchetta_monete);
-            secondpag.Controls.Add(lblMonete);
-            secondpag.Controls.Add(lblTicchetta_tema);
-            secondpag.Controls.Add(lblTema_scelta);
-            secondpag.Controls.Add(lblTcchetta_difficult);
-            secondpag.Controls.Add(lblDifficult_scelta);
-            secondpag.Controls.Add(lblRis_lettera_inserita);
-            secondpag.Controls.Add(lblTicchetta_lettere);
-            secondpag.Controls.Add(lblLettere_provate);
-            secondpag.Controls.Add(lblTicchetta_Tentativi);
-            secondpag.Controls.Add(lblTentativi);
+            Label[] lbl_secondpag = { lblParola, lblTicchetta_monete, lblMonete, lblTicchetta_tema, lblTema_scelta, lblTcchetta_difficult, lblDifficult_scelta, lblRis_lettera_inserita, lblTicchetta_lettere, lblLettere_provate, lblTicchetta_Tentativi, lblTentativi };
 
-            this.Controls.Add(secondpag);
+            for (int i = 0; i < lbl_secondpag.Length; i++)
+            {
+                secondpag[i] = lbl_secondpag[i];
+            }
 
+            Button[] btn_tastiera = { btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ };
 
-            il_gioco = new GroupBox();
-            il_gioco.Dock = DockStyle.Fill;
-            il_gioco.Controls.Add(lblParola);
-            il_gioco.Controls.Add(lblTicchetta_monete);
-            il_gioco.Controls.Add(lblMonete);
-            il_gioco.Controls.Add(lblTicchetta_tema);
-            il_gioco.Controls.Add(lblTema_scelta);
-            il_gioco.Controls.Add(lblTcchetta_difficult);
-            il_gioco.Controls.Add(lblDifficult_scelta);
-            il_gioco.Controls.Add(lblRis_lettera_inserita);
-            il_gioco.Controls.Add(lblTicchetta_lettere);
-            il_gioco.Controls.Add(lblLettere_provate);
-            il_gioco.Controls.Add(lblTicchetta_Tentativi);
-            il_gioco.Controls.Add(lblTentativi);
-
-            this.Controls.Add(il_gioco);
-
-            Button[] btn_lettere = { btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ };
+            for (int i = 0; i < btn_tastiera.Length; i++)
+            {
+                btn_lettere[i] = btn_tastiera[i];
+            }
 
             thirdpag = new GroupBox();
             thirdpag.Dock = DockStyle.Fill;
@@ -82,18 +57,6 @@ namespace impiccato_grafic
             thirdpag.Controls.Add(btnNo);
 
             this.Controls.Add(thirdpag);
-
-            tastiera = new GroupBox();
-            tastiera.Dock = DockStyle.Fill;
-            for (int i = 0; i < btn_lettere.Length; i++)
-            {
-                tastiera.Controls.Add(btn_lettere[i]);
-            }
-
-            tastiera.Controls.Add(lblLettera_inserito);
-            tastiera.Controls.Add(btnOk);
-
-            this.Controls.Add(tastiera);
 
             richiesta_indovina_parola = new GroupBox();
             richiesta_indovina_parola.Dock = DockStyle.Fill;
@@ -113,15 +76,6 @@ namespace impiccato_grafic
 
             this.Controls.Add(parola_completa);
 
-            fourthpag = new GroupBox();
-            fourthpag.Dock = DockStyle.Fill;
-
-            fourthpag.Controls.Add(lblDomanda_continua);
-            fourthpag.Controls.Add(btnSi);
-            fourthpag.Controls.Add(btnNo);
-
-            this.Controls.Add(fourthpag);
-
             lastpag = new GroupBox();
             lastpag.Dock = DockStyle.Fill;
 
@@ -131,11 +85,32 @@ namespace impiccato_grafic
             this.Controls.Add(lastpag);
 
             firstpag.Visible = true;
+
+            for (int i = 0; i < secondpag.Length; i++)
+            {
+                secondpag[i].Visible = false;
+            }
+
             thirdpag.Visible = false;
+
+            for (int i = 0; i < btn_lettere.Length; i++)
+            {
+                btn_lettere[i].Visible = false;
+            }
+
+            lblLettera_inserito.Visible = false;
+            btnOk.Visible = false;
+
             richiesta_indovina_parola.Visible = false;
             parola_completa.Visible = false;
-            fourthpag.Visible = false;
+
+            lblDomanda_continua.Visible = false;
+            btnSi.Visible = false;
+            btnNo.Visible = false;
+
             lastpag.Visible = false;
+
+            btn_nextpag.Visible = false;
         }
 
         private void ckbTema_SelectedIndexChanged(object sender, EventArgs e)
@@ -186,11 +161,30 @@ namespace impiccato_grafic
 
             if (tema != null && difficult != null)
             {
-                firstpag.Visible = false;
-                secondpag.Visible = true;
-                tastiera.Visible = true;
-                lblErrore_TemaDiff.Visible = false;
+                for (int i = 0; i < secondpag.Length; i++)
+                {
+                    secondpag[i].Visible = true;
+                }
+                lblTicchetta_monete.Visible = true;
+                lblDomanda_continua.Visible = false;
+                btnSi.Visible = false;
+                btnNo.Visible = false;
+
+                lastpag.Visible = false;
                 btnStart.Visible = false;
+                firstpag.Visible = false;
+
+                btn_nextpag.Visible = false;
+
+                for (int i = 0; i < btn_lettere.Length; i++)
+                {
+                    btn_lettere[i].Visible = true;
+                }
+
+                lblLettera_inserito.Visible = true;
+                btnOk.Visible = true;
+
+                lblErrore_TemaDiff.Visible = false;
 
                 gioco();
             }
@@ -367,8 +361,8 @@ namespace impiccato_grafic
             int num_tentativi = 0, posizione_indovinate = 0, posizione_non_indovinate = 0;
             int nm = 0, posizione_parole_uscite = 0, monete = 0;
 
-                string filePath = tema_scelta(tema);
-                string[] lines = File.ReadAllLines(filePath);
+            string filePath = tema_scelta(tema);
+            string[] lines = File.ReadAllLines(filePath);
 
             if (difficult.Contains("Facile"))
             {
@@ -384,49 +378,54 @@ namespace impiccato_grafic
 
             }
 
+            lblDifficult.Text = difficult;
+            lblTema_scelta.Text = tema;
             parole(lines, ref parola_scelte, ref num_tentativi, ref nm, difficult);
-                parola = parola_casuale(random, parola_scelte, parole_uscite);
-                parola_segreta = parola_da_indovina(parola);
+            parola = parola_casuale(random, parola_scelte, parole_uscite);
+            parola_segreta = parola_da_indovina(parola);
 
             lblTentativi.Text = num_tentativi.ToString();
 
-                parole_uscite[posizione_parole_uscite++] = parola_segreta;
+            parole_uscite[posizione_parole_uscite++] = parola_segreta;
 
-                if (indovina(parola_segreta, num_tentativi, ref monete, lettera) == true)
+            if (indovina(parola_segreta, num_tentativi, ref monete, lettera_ins) == true)
+            {
+                monete += nm;
+                lblRis_lettera_inserita.Text = "Congratulazioni! Hai indovinato la parola!";
+                parole_indovinate[posizione_indovinate++] = parola_segreta;
+                lbxParole_indovinate.Items.Add(parola_segreta);
+            }
+            else
+            {
+                parole_non_indovinate[posizione_non_indovinate++] = parola_segreta;
+                lbxParole_non_indovinate.Items.Add(parola_segreta);
+            }
+
+            // btn_nextpag.Visible = true;
+
+            btnSi.Click += (sender, e) =>
+            {
+                firstpag.Visible = true;
+
+                for (int i = 0; i < secondpag.Length; i++)
                 {
-                    monete += nm;
-                    lblRis_lettera_inserita.Text = "Congratulazioni! Hai indovinato la parola!";
-                    parole_indovinate[posizione_indovinate++] = parola_segreta;
-                    lbxParole_indovinate.Items.Add(parola_segreta);
-                }
-                else
-                {
-                    parole_non_indovinate[posizione_non_indovinate++] = parola_segreta;
-                    lbxParole_non_indovinate.Items.Add(parola_segreta);
+                    secondpag[i].Visible = false;
                 }
 
-                firstpag.Visible = false;
-                secondpag.Visible = false;
                 thirdpag.Visible = false;
                 richiesta_indovina_parola.Visible = false;
                 parola_completa.Visible = false;
-                fourthpag.Visible = true;
                 lastpag.Visible = false;
 
-                btnSi.Click += (sender, e) =>
-                {
-                    firstpag.Visible = true;
-                    secondpag.Visible = false;
-                    thirdpag.Visible = false;
-                    richiesta_indovina_parola.Visible = false;
-                    parola_completa.Visible = false;
-                    fourthpag.Visible = false;
-                    lastpag.Visible = false;
-                };
+                lblDomanda_continua.Visible = false;
+                btnSi.Visible = false;
+                btnNo.Visible = false;
+            };
         }
 
         private bool indovina(string p, int tentativi_max, ref int m, char lettera)
         {
+            lblRis_lettera_inserita.Text = "";
             char[] lettere_parola_non_ripete = new char[p.Length];
             char[] parola_con_trattini = new char[p.Length];
 
@@ -455,6 +454,8 @@ namespace impiccato_grafic
             {
                 parola_con_trattini[i] = '_';
             }
+
+
 
             lblRis_lettera_inserita.Text = "Adesso indovina la parola nascosta una lettera alla volta!";
 
@@ -504,7 +505,14 @@ namespace impiccato_grafic
             else if (nTentativi_lettere_indovinate > n_indovina_parola)
             {
                 lblRis_lettera_inserita.Text = new string(parola_con_trattini);
-                tastiera.Visible = false;
+                for (int i = 0; i < btn_lettere.Length; i++)
+                {
+                    btn_lettere[i].Visible = false;
+                }
+
+                lblLettera_inserito.Visible = false;
+                btnOk.Visible = false;
+
                 richiesta_indovina_parola.Visible = true;
 
                 btnPC_si.Click += (sender, e) =>
@@ -587,7 +595,7 @@ namespace impiccato_grafic
         {
             int posizione = -1;
             bool trovato = false;
-            while(trovato == false)
+            while (trovato == false)
             {
                 posizione = random.Next(0, 20);
 
@@ -599,7 +607,7 @@ namespace impiccato_grafic
                     }
                 }
             }
-            
+
             return parole[posizione];
         }
 
@@ -631,12 +639,30 @@ namespace impiccato_grafic
         {
             string parola_provata = tbxParola_inserita.Text;
             firstpag.Visible = false;
-            secondpag.Visible = true;
+
+            for (int i = 0; i < secondpag.Length; i++)
+            {
+                secondpag[i].Visible = true;
+            }
+
             thirdpag.Visible = false;
             richiesta_indovina_parola.Visible = false;
             parola_completa.Visible = false;
-            fourthpag.Visible = false;
+
+            lblDomanda_continua.Visible = false;
+            btnSi.Visible = false;
+            btnNo.Visible = false;
+
             lastpag.Visible = false;
+
+            for (int i = 0; i < btn_lettere.Length; i++)
+            {
+                btn_lettere[i].Visible = true;
+            }
+
+            lblLettera_inserito.Visible = true;
+            btnOk.Visible = true;
+
             if (parola_provata == p)
             {
                 return true;
@@ -651,12 +677,92 @@ namespace impiccato_grafic
         private void btnNo_Click(object sender, EventArgs e)
         {
             firstpag.Visible = false;
-            secondpag.Visible = false;
+
+            for (int i = 0; i < secondpag.Length; i++)
+            {
+                secondpag[i].Visible = false;
+            }
+
             thirdpag.Visible = false;
             richiesta_indovina_parola.Visible = false;
             parola_completa.Visible = false;
-            fourthpag.Visible = false;
+
+            lblDomanda_continua.Visible = false;
+            btnSi.Visible = false;
+            btnNo.Visible = false;
+
             lastpag.Visible = true;
+
+            for (int i = 0; i < btn_lettere.Length; i++)
+            {
+                btn_lettere[i].Visible = false;
+            }
+
+            lblLettera_inserito.Visible = false;
+            btnOk.Visible = false;
+        }
+
+        private void btnSi_Click(object sender, EventArgs e)
+        {
+            firstpag.Visible = true;
+
+            for (int i = 0; i < secondpag.Length; i++)
+            {
+                secondpag[i].Visible = false;
+            }
+
+            thirdpag.Visible = false;
+            richiesta_indovina_parola.Visible = false;
+            parola_completa.Visible = false;
+
+            lblDomanda_continua.Visible = false;
+            btnSi.Visible = false;
+            btnNo.Visible = false;
+
+            lastpag.Visible = false;
+
+            for (int i = 0; i < btn_lettere.Length; i++)
+            {
+                btn_lettere[i].Visible = false;
+            }
+
+            lblLettera_inserito.Visible = false;
+            btnOk.Visible = false;
+        }
+
+        private void btn_nextpag_Click(object sender, EventArgs e)
+        {
+            firstpag.Visible = false;
+
+            for (int i = 0; i < secondpag.Length; i++)
+            {
+                secondpag[i].Visible = false;
+            }
+
+            thirdpag.Visible = false;
+
+            for (int i = 0; i < btn_lettere.Length; i++)
+            {
+                btn_lettere[i].Visible = false;
+            }
+
+            lblLettera_inserito.Visible = false;
+            btnOk.Visible = false;
+
+            richiesta_indovina_parola.Visible = false;
+            parola_completa.Visible = false;
+
+            lblDomanda_continua.Visible = false;
+            btnSi.Visible = false;
+            btnNo.Visible = false;
+
+            lastpag.Visible = true;
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            lettera_ins = lettera;
+            lblLettera_inserito.Text = "";
         }
     }
 }

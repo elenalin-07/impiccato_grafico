@@ -88,6 +88,7 @@
             tbxParola_inserita = new TextBox();
             lbxParole_non_indovinate = new ListBox();
             lbxParole_indovinate = new ListBox();
+            btn_nextpag = new Button();
             SuspendLayout();
             // 
             // lblTitle
@@ -187,11 +188,11 @@
             // lblParola
             // 
             lblParola.AutoSize = true;
-            lblParola.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblParola.Font = new Font("AR BLANCA", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblParola.Location = new Point(198, 166);
             lblParola.MinimumSize = new Size(438, 15);
             lblParola.Name = "lblParola";
-            lblParola.Size = new Size(438, 37);
+            lblParola.Size = new Size(438, 32);
             lblParola.TabIndex = 14;
             lblParola.Text = "parola segreta";
             lblParola.TextAlign = ContentAlignment.MiddleCenter;
@@ -266,12 +267,11 @@
             // lblRis_lettera_inserita
             // 
             lblRis_lettera_inserita.AutoSize = true;
-            lblRis_lettera_inserita.BorderStyle = BorderStyle.FixedSingle;
             lblRis_lettera_inserita.Location = new Point(198, 212);
-            lblRis_lettera_inserita.MaximumSize = new Size(438, 2);
-            lblRis_lettera_inserita.MinimumSize = new Size(438, 2);
+            lblRis_lettera_inserita.MaximumSize = new Size(438, 22);
+            lblRis_lettera_inserita.MinimumSize = new Size(438, 22);
             lblRis_lettera_inserita.Name = "lblRis_lettera_inserita";
-            lblRis_lettera_inserita.Size = new Size(438, 2);
+            lblRis_lettera_inserita.Size = new Size(438, 22);
             lblRis_lettera_inserita.TabIndex = 23;
             lblRis_lettera_inserita.Text = "Oops! La parola che hai provato non è corretta. Non preoccuparti, puoi continuare a giocare! Prova a indovinare un’altra lettera o riprova a indovinare la parola!";
             lblRis_lettera_inserita.TextAlign = ContentAlignment.MiddleCenter;
@@ -305,6 +305,7 @@
             btnOk.TabIndex = 76;
             btnOk.Text = "OK";
             btnOk.UseVisualStyleBackColor = false;
+            btnOk.Click += btnOk_Click;
             // 
             // btnC
             // 
@@ -774,6 +775,7 @@
             btnSi.TabIndex = 83;
             btnSi.Text = "SI";
             btnSi.UseVisualStyleBackColor = false;
+            btnSi.Click += btnSi_Click;
             // 
             // lblDomanda_continua
             // 
@@ -874,12 +876,27 @@
             lbxParole_indovinate.Size = new Size(183, 132);
             lbxParole_indovinate.TabIndex = 91;
             // 
+            // btn_nextpag
+            // 
+            btn_nextpag.BackColor = Color.RoyalBlue;
+            btn_nextpag.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_nextpag.ForeColor = SystemColors.ControlLightLight;
+            btn_nextpag.Location = new Point(695, 391);
+            btn_nextpag.Name = "btn_nextpag";
+            btn_nextpag.Size = new Size(93, 48);
+            btn_nextpag.TabIndex = 93;
+            btn_nextpag.Text = "Next Page";
+            btn_nextpag.UseVisualStyleBackColor = false;
+            btn_nextpag.Click += btn_nextpag_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_nextpag);
+            Controls.Add(lblParola);
             Controls.Add(lbxParole_non_indovinate);
             Controls.Add(lbxParole_indovinate);
             Controls.Add(lblTicchetta_parola_inserito);
@@ -931,14 +948,13 @@
             Controls.Add(lblTicchetta_tema);
             Controls.Add(lblMonete);
             Controls.Add(lblTicchetta_monete);
-            Controls.Add(lblParola);
             Controls.Add(ckbDifficult);
             Controls.Add(ckbTema);
             Controls.Add(btnStart);
             Controls.Add(lblDifficult);
             Controls.Add(lblTema);
-            Controls.Add(lblIntro);
             Controls.Add(lblTitle);
+            Controls.Add(lblIntro);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -1006,5 +1022,6 @@
         private TextBox tbxParola_inserita;
         private ListBox lbxParole_non_indovinate;
         private ListBox lbxParole_indovinate;
+        private Button btn_nextpag;
     }
 }
