@@ -354,15 +354,15 @@ namespace impiccato_grafic
             string[] parole_uscite = new string[60];
 
             string[] parola_scelte = new string[20];
-            string parola, parola_segreta, ris;
+            string parola, parola_segreta;
             int num_tentativi = 0, posizione_indovinate = 0, posizione_non_indovinate = 0;
             int nm = 0, posizione_parole_uscite = 0, monete = 0;
 
-                string filePath = tema_scelta(tema);
-                string[] lines = File.ReadAllLines(filePath);
-                parole(lines, ref parola_scelte, ref num_tentativi, ref nm, tema);
-                parola = parola_casuale(parola_scelte, parole_uscite);
-                parola_segreta = parola_da_indovina(parola);
+            string filePath = tema_scelta(tema);
+            string[] lines = File.ReadAllLines(filePath);
+            parole(lines, ref parola_scelte, ref num_tentativi, ref nm, tema);
+            parola = parola_casuale(parola_scelte, parole_uscite);
+            parola_segreta = parola_da_indovina(parola);
 
             lblTentativi.Text = num_tentativi.ToString();
 

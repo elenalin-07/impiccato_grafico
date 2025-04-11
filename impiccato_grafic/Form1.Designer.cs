@@ -140,7 +140,7 @@
             btnStart.Cursor = Cursors.Hand;
             btnStart.Font = new Font("Cooper Black", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnStart.ForeColor = SystemColors.Control;
-            btnStart.Location = new Point(405, 490);
+            btnStart.Location = new Point(397, 486);
             btnStart.Margin = new Padding(3, 4, 3, 4);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(127, 48);
