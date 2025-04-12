@@ -124,4 +124,11 @@ Ogni volta che indovini una lettera correttamente, la parola si aggiornerà. Se 
 
 Sei pronto a iniziare? Scegli una tema e una difficoltà per la parola, ogni volta che indovinerai la parola, riceverai un premio in monete che dipende dalla difficoltà della parola.</value>
   </data>
+  <data name="lblIntro_indizi1.Text" xml:space="preserve">
+    <value>Per rendere l'esperienza ancora più avvincente, hai a disposizione alcune funzioni speciali che possono aiutarti a risolvere il mistero. 
+Ogni funzione può essere utilizzata con un piccolo sacrificio di monete, quindi scegli saggiamente quando usarle! </value>
+  </data>
+  <data name="lblintro_extra_chance.Text" xml:space="preserve">
+    <value>Sei davvero vicino alla fine e ti restano solo {tentativi} tentativi! Se stai trovando difficile indovinare la parola, posso darti un piccolo aiuto. Vuoi un indizio: Sorgente (per questa volta costa 5 monete!)?"</value>
+  </data>
 </root>

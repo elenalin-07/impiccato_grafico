@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
@@ -8,12 +9,11 @@ namespace impiccato_grafic
     {
         private GroupBox firstpag;
         private GroupBox secondpag;
+        private Button[] tastiera = new Button[26];
         private GroupBox thirdpag;
-        private GroupBox tastiera;
-        private GroupBox richiesta_indovina_parola;
-        private GroupBox parola_completa;
         private GroupBox fourthpag;
         private GroupBox lastpag;
+        private GroupBox indizi;
 
         public Form1()
         {
@@ -21,13 +21,28 @@ namespace impiccato_grafic
             inizio();
         }
 
-        char lettera;
+        char lettera, lettera_inserita;
+        string parola_segreta = "";
+        int num_tentativi = 0, monete = 10;
+        bool game;
+        int posizione_indovinate = 0, posizione_non_indovinate = 0;
+        int nm = 0, posizione_parole_uscite = 0, ind = 0;
+        string[] parole_indovinate = new string[60];
+        string[] parole_non_indovinate = new string[60];
+        string[] parole_uscite = new string[60];
+
+        string[] parola_scelte = new string[20];
+        string parola;
+
+        char[] parola_con_trattini;
+
+        string indizio;
 
         Random random = new Random();
 
         private void inizio()
         {
-            GroupBox firstpag = new GroupBox();
+            firstpag = new GroupBox();
             firstpag.Dock = DockStyle.Fill;
             firstpag.Controls.Add(lblIntro);
             firstpag.Controls.Add(lblTema);
@@ -38,11 +53,9 @@ namespace impiccato_grafic
 
             this.Controls.Add(firstpag);
 
-            GroupBox secondpag = new GroupBox();
+            secondpag = new GroupBox();
             secondpag.Dock = DockStyle.Fill;
             secondpag.Controls.Add(lblParola);
-            secondpag.Controls.Add(lblTicchetta_monete);
-            secondpag.Controls.Add(lblMonete);
             secondpag.Controls.Add(lblTicchetta_tema);
             secondpag.Controls.Add(lblTema_scelta);
             secondpag.Controls.Add(lblTcchetta_difficult);
@@ -52,20 +65,29 @@ namespace impiccato_grafic
             secondpag.Controls.Add(lblLettere_provate);
             secondpag.Controls.Add(lblTicchetta_Tentativi);
             secondpag.Controls.Add(lblTentativi);
+            secondpag.Controls.Add(lblTicchetta_indizio_acquistato);
+            secondpag.Controls.Add(lblIndizio_acquistato);
+            secondpag.Controls.Add(lblRis_indizio);
 
             Button[] btn_lettere = { btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ };
+
+            for (int i = 0; i < btn_lettere.Length; i++)
+            {
+                tastiera[i] = btn_lettere[i];
+            }
 
             for (int i = 0; i < btn_lettere.Length; i++)
             {
                 secondpag.Controls.Add(btn_lettere[i]);
             }
 
-            secondpag.Controls.Add(btnOk);
             secondpag.Controls.Add(lblLettera_inserito);
+            secondpag.Controls.Add(btnOk);
+
 
             this.Controls.Add(secondpag);
 
-            GroupBox thirdpag = new GroupBox();
+            thirdpag = new GroupBox();
             thirdpag.Dock = DockStyle.Fill;
             thirdpag.Controls.Add(lblDomanda_continua);
             thirdpag.Controls.Add(btnSi);
@@ -73,47 +95,18 @@ namespace impiccato_grafic
 
             this.Controls.Add(thirdpag);
 
-            GroupBox tastiera = new GroupBox();
-            tastiera.Dock = DockStyle.Fill;
 
-            for (int i = 0; i < btn_lettere.Length; i++)
-            {
-                tastiera.Controls.Add(btn_lettere[i]);
-            }
-
-            tastiera.Controls.Add(lblLettera_inserito);
-            tastiera.Controls.Add(btnOk);
-
-            this.Controls.Add(tastiera);
-
-            GroupBox richiesta_indovina_parola = new GroupBox();
-            richiesta_indovina_parola.Dock = DockStyle.Fill;
-
-            richiesta_indovina_parola.Controls.Add(lblParola_completa);
-            richiesta_indovina_parola.Controls.Add(btnPC_si);
-            richiesta_indovina_parola.Controls.Add(btnPC_no);
-
-            this.Controls.Add(richiesta_indovina_parola);
-
-            GroupBox parola_completa = new GroupBox();
-            parola_completa.Dock = DockStyle.Fill;
-
-            parola_completa.Controls.Add(lblTicchetta_parola_inserito);
-            parola_completa.Controls.Add(tbxParola_inserita);
-            parola_completa.Controls.Add(btnParola_inserita);
-
-            this.Controls.Add(parola_completa);
-
-            GroupBox fourthpag = new GroupBox();
+            fourthpag = new GroupBox();
             fourthpag.Dock = DockStyle.Fill;
 
             fourthpag.Controls.Add(lblDomanda_continua);
             fourthpag.Controls.Add(btnSi);
             fourthpag.Controls.Add(btnNo);
+            fourthpag.Controls.Add(lblGioco);
 
             this.Controls.Add(fourthpag);
 
-            GroupBox lastpag = new GroupBox();
+            lastpag = new GroupBox();
             lastpag.Dock = DockStyle.Fill;
 
             lastpag.Controls.Add(lbxParole_indovinate);
@@ -121,13 +114,50 @@ namespace impiccato_grafic
 
             this.Controls.Add(lastpag);
 
+            indizi = new GroupBox();
+            indizi.Dock = DockStyle.Fill;
+
+            indizi.Controls.Add(lblTitle_indizi);
+            indizi.Controls.Add(lblIntro_indizi1);
+            indizi.Controls.Add(lblIntro_indizi2);
+
+            this.Controls.Add(indizi);
+
             firstpag.Visible = true;
             secondpag.Visible = false;
             thirdpag.Visible = false;
-            richiesta_indovina_parola.Visible = false;
-            parola_completa.Visible = false;
+
+            lblParola_completa.Visible = false;
+            btnPC_si.Visible = false;
+            btnPC_no.Visible = false;
+
+            lblTicchetta_parola_inserito.Visible = false;
+            tbxParola_inserita.Visible = false;
+            btnParola_inserita.Visible = false;
+
             fourthpag.Visible = false;
             lastpag.Visible = false;
+            indizi.Visible = false;
+
+            lblIntro_indizi3.Visible = false;
+            btnIndizio_si.Visible = false;
+            btnIndizio_no.Visible = false;
+            lblConquista_indizio.Visible = false;
+            ckbIndizio.Visible = false;
+            btnIndizio_scelto.Visible = false;
+
+            lblTicchetta_monete.Visible = false;
+            lblMonete.Visible = false;
+
+            lblintro_extra_chance.Visible = true;
+            btnExtra_chance_si.Visible = true;
+            btnExtra_chance_no.Visible = true;
+
+            lblintro_extra_chance.Visible = false;
+            btnExtra_chance_si.Visible = false;
+            btnExtra_chance_no.Visible = false;
+
+            lblMonete.Text = monete.ToString();
         }
 
         private void ckbTema_SelectedIndexChanged(object sender, EventArgs e)
@@ -155,11 +185,11 @@ namespace impiccato_grafic
                 }
             }
         }
-        string tema, difficult;
-        bool btnStart_clicked = false;
 
+        string tema, difficult;
         private void btnStart_Click(object sender, EventArgs e)
         {
+            lblErrore.Text = "Per favore scegli una tema e / o una difficoltà";
             for (int i = 0; i < ckbTema.Items.Count; i++)
             {
                 if (ckbTema.GetItemChecked(i))
@@ -179,16 +209,29 @@ namespace impiccato_grafic
             if (tema != null && difficult != null)
             {
                 firstpag.Visible = false;
-                secondpag.Visible = true;
-                tastiera.Visible = true;
-                lblErrore_TemaDiff.Visible = false;
+                indizi.Visible = true;
 
-                gioco();
+                lblTicchetta_monete.Visible = true;
+                lblMonete.Visible = true;
+
+                lblIntro_indizi3.Visible = true;
+                btnIndizio_si.Visible = true;
+                btnIndizio_no.Visible = true;
+
+                lblErrore.Visible = false;
             }
             else
             {
-                lblErrore_TemaDiff.Visible = true;
+                lblErrore.Visible = true;
             }
+
+            Array.Clear(lettere_provate);
+            tentativi = 0;
+            n_prove = 0;
+            lettere_indovinate = 0;
+            lblLettera_inserito.Text = null;
+            lblRis_indizio.Text = null;
+            lblIndizio_acquistato.Text = null;
         }
 
         private void btnA_Click(object sender, EventArgs e)
@@ -347,152 +390,267 @@ namespace impiccato_grafic
             lblLettera_inserito.Text = lettera.ToString();
         }
 
-        void gioco()
+        void controllo()
         {
-            string[] parole_indovinate = new string[60];
-            string[] parole_non_indovinate = new string[60];
-            string[] parole_uscite = new string[60];
+            lblintro_extra_chance.Visible = false;
+            btnExtra_chance_si.Visible = false;
+            btnExtra_chance_no.Visible = false;
 
-            string[] parola_scelte = new string[20];
-            string parola, parola_segreta;
-            int num_tentativi = 0, posizione_indovinate = 0, posizione_non_indovinate = 0;
-            int nm = 0, posizione_parole_uscite = 0, monete = 0;
-
-            string filePath = tema_scelta(tema);
-            string[] lines = File.ReadAllLines(filePath);
-            parole(lines, ref parola_scelte, ref num_tentativi, ref nm, tema);
-            parola = parola_casuale(parola_scelte, parole_uscite);
-            parola_segreta = parola_da_indovina(parola);
-
-            lblTentativi.Text = num_tentativi.ToString();
-
-                parole_uscite[posizione_parole_uscite++] = parola_segreta;
-
-                if (indovina(parola_segreta, num_tentativi, ref monete, lettera) == true)
-                {
-                    monete += nm;
-                    lblRis_lettera_inserita.Text = "Congratulazioni! Hai indovinato la parola!";
-                    parole_indovinate[posizione_indovinate++] = parola_segreta;
-                    lbxParole_indovinate.Items.Add(parola_segreta);
-                }
-                else
-                {
-                    parole_non_indovinate[posizione_non_indovinate++] = parola_segreta;
-                    lbxParole_non_indovinate.Items.Add(parola_segreta);
-                }
-
-                firstpag.Visible = false;
-                secondpag.Visible = false;
-                thirdpag.Visible = false;
-                richiesta_indovina_parola.Visible = false;
-                parola_completa.Visible = false;
-                fourthpag.Visible = true;
-                lastpag.Visible = false;
-
-                btnSi.Click += (sender, e) =>
-                {
-                    firstpag.Visible = true;
-                    secondpag.Visible = false;
-                    thirdpag.Visible = false;
-                    richiesta_indovina_parola.Visible = false;
-                    parola_completa.Visible = false;
-                    fourthpag.Visible = false;
-                    lastpag.Visible = false;
-                };
-        }
-
-        private bool indovina(string p, int tentativi_max, ref int m, char lettera)
-        {
-            char[] lettere_parola_non_ripete = new char[p.Length];
-            char[] parola_con_trattini = new char[p.Length];
-
-            int tentativi = 0, nTentativi_lettere_indovinate = 0, n_prove = 0, n_indovina_parola = 0;
-            char[] lettere_provate = new char[26];
-
-            for (int i = 0; i < p.Length; i++)
+            lblGioco.Visible = true;
+            if (game == true)
             {
-                if (!lettere_parola_non_ripete.Contains(p[i]))
-                {
-                    lettere_parola_non_ripete[i] = p[i];
-                    n_indovina_parola++;
-                }
-            }
-
-            if (n_indovina_parola < 5)
-            {
-                n_indovina_parola -= 3;
+                monete += nm;
+                lblMonete.Text = monete.ToString();
+                lblGioco.Text = "Congratulazioni! Hai indovinato la parola!";
+                parole_indovinate[posizione_indovinate++] = parola_segreta;
+                lbxParole_indovinate.Items.Add(parola_segreta);
             }
             else
             {
-                n_indovina_parola = 3;
+                lblGioco.Text = $"Hai esaurito i tentativi. La parola segreta era: {parola_segreta}";
+                parole_non_indovinate[posizione_non_indovinate++] = parola_segreta;
+                lbxParole_non_indovinate.Items.Add(parola_segreta);
+
             }
 
-            for (int i = 0; i < parola_con_trattini.Length; i++)
+            firstpag.Visible = false;
+            secondpag.Visible = false;
+
+            lblintro_extra_chance.Visible = false;
+            btnExtra_chance_si.Visible = false;
+            btnExtra_chance_no.Visible = false;
+
+
+            thirdpag.Visible = false;
+
+            lblTicchetta_monete.Visible = false;
+            lblMonete.Visible = false;
+
+            lblParola_completa.Visible = false;
+            btnPC_si.Visible = false;
+            btnPC_no.Visible = false;
+
+            lblTicchetta_parola_inserito.Visible = false;
+            tbxParola_inserita.Visible = false;
+            btnParola_inserita.Visible = false;
+
+            fourthpag.Visible = true;
+            lastpag.Visible = false;
+        }
+
+        char[] lettere_alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+        void gioco()
+        {
+            lblIndizio_acquistato.Text = null;
+            lblLettere_provate.Text = null;
+            lblRis_lettera_inserita.Text = null;
+
+            if (difficult.Contains("Facile"))
+            {
+                difficult = difficult.Substring(0, 6);
+            }
+            else if (difficult.Contains("Normale"))
+            {
+                difficult = difficult.Substring(0, 7);
+            }
+            else
+            {
+                difficult = difficult.Substring(0, 9);
+
+            }
+
+            lblDifficult_scelta.Text = difficult;
+            lblTema_scelta.Text = tema;
+            string filePath = tema_scelta(tema);
+            string[] lines = File.ReadAllLines(filePath);
+            parole(lines, ref parola_scelte, ref num_tentativi, ref nm, difficult);
+            parola = parola_casuale(parola_scelte, parole_uscite);
+            parola_segreta = parola_da_indovina(parola);
+
+            parola_con_trattini = new char[parola_segreta.Length];
+
+            for (int i = 0; i < parola_segreta.Length; i++)
             {
                 parola_con_trattini[i] = '_';
             }
 
-            lblRis_lettera_inserita.Text = "Adesso indovina la parola nascosta una lettera alla volta!";
+            lblTentativi.Text = num_tentativi.ToString();
+
+            parole_uscite[posizione_parole_uscite++] = parola_segreta;
+
+            lblMonete.Text = monete.ToString();
+
+            int first_letter = 0;
+            if (ind == 1)
+            {
+                lblIndizio_acquistato.Text = "Dizionario";
+                lblRis_indizio.Text = "Hai acquistato un indizio!" +
+                    $"\nUna lettera è stata rivelata: {parola_segreta[0]}";
+
+                parola_con_trattini[0] = parola_segreta[0];
+
+                for (int i = 0; i < parola_segreta.Length; i++)
+                {
+                    if (parola_segreta[i] == parola_segreta[0])
+                    {
+                        first_letter++;
+                    }
+                }
+
+                if (first_letter == 1)
+                {
+                    lettere_provate[n_prove++] = parola_segreta[0];
+                    lblLettere_provate.Text += parola_segreta[0] + " ";
+                }
+
+                ind = 0;
+            }
+
+            else if (ind == 2)
+            {
+                sorgente();
+                ind = 0;
+            }
 
             lblParola.Text = new string(parola_con_trattini);
-            lblLettere_provate.Text = new string(lettere_provate);
-            lblTentativi.Text = (tentativi_max - tentativi).ToString();
-            lblRis_lettera_inserita.Text = "Inserisci una lettera:";
+        }
 
-            if (lettere_provate.Contains(lettera))
-            {
-                lblRis_lettera_inserita.Text = "Hai già scelto questa lettera! Prova con una lettera diversa.";
-            }
+        int tentativi = 0, n_prove = 0, lettere_indovinate = 0;
+        char[] lettere_provate = new char[26];
 
-            bool lettera_corretta = false;
-            for (int i = 0; i < p.Length; i++)
+        void sorgente()
+        {
+            bool contains = false;
+
+            lblIndizio_acquistato.Text = "Sorgente";
+            int carattere = random.Next(1, 27);
+
+            lblRis_indizio.Text = "Hai acquistato un indizio!" +
+                $"\nUna lettera è stata rivelata: {lettere_alfabeto[carattere]}";
+
+            lettere_provate[n_prove++] = lettere_alfabeto[carattere];
+            lblLettere_provate.Text += lettere_alfabeto[carattere] + " ";
+
+            if (parola_segreta.Contains(lettere_alfabeto[carattere]))
             {
-                if (p[i] == lettera)
+                for (int i = 0; i < parola_segreta.Length; i++)
                 {
-                    parola_con_trattini[i] = lettera;
-                    lettera_corretta = true;
+                    if (parola_segreta[i] == lettere_alfabeto[carattere])
+                    {
+                        contains = true;
+                        parola_con_trattini[i] = lettere_alfabeto[carattere];
+                    }
                 }
-            }
-
-            if (lettera_corretta)
-            {
-                nTentativi_lettere_indovinate++;
-                lblRis_lettera_inserita.Text = "Bravo! Hai indovinato una lettera.";
+                if (contains == true)
+                {
+                    lblRis_indizio.Text = $"La lettera {lettere_alfabeto[carattere]} è presente nella parola segreta!";
+                }
             }
             else
             {
-                lblRis_lettera_inserita.Text = "Oops! La lettera che hai scelto non è corretta.";
-                tentativi++;
+                lblRis_indizio.Text = $"Purtroppo, la lettera {lettere_alfabeto[carattere]} non è presente nella parola segreta. Non arrenderti, continua a provare!";
             }
 
-            lettere_provate[n_prove++] = lettera;
-            bool scelta_indizio = false;
+            lettere_provate[n_prove++] = lettere_alfabeto[carattere];
 
-            if (!new string(parola_con_trattini).Contains("_"))
-            {
-                return true;
-            }
-            else if (tentativi >= tentativi_max)
-            {
-                lblRis_lettera_inserita.Text = $"Hai esaurito i tentativi. La parola segreta era: {p}";
-                return false;
-            }
-            else if (nTentativi_lettere_indovinate > n_indovina_parola)
-            {
-                lblRis_lettera_inserita.Text = new string(parola_con_trattini);
-                tastiera.Visible = false;
-                richiesta_indovina_parola.Visible = true;
+            lblParola.Text = new string(parola_con_trattini);
+        }
+        private void indovina()
+        {
+            lblRis_lettera_inserita.Text = null;
 
-                btnPC_si.Click += (sender, e) =>
+            for (int i = 0; i < parola_segreta.Length; i++)
+            {
+                if (parola_segreta[i] == lettera_inserita)
                 {
-                    if (indovina_parola(p))
-                    {
-                        return;
-                    }
-                };
+                    parola_con_trattini[i] = parola_segreta[i];
+                }
             }
 
-            return false;
+            lblParola.Text = new string(parola_con_trattini);
+
+            lblRis_lettera_inserita.Text = "Inserisci una lettera:";
+
+            if (lettera_inserita != '1')
+            {
+                bool lettera_corretta = false;
+                for (int i = 0; i < parola_segreta.Length; i++)
+                {
+                    if (parola_segreta[i] == lettera_inserita)
+                    {
+                        parola_con_trattini[i] = lettera_inserita;
+                        lettera_corretta = true;
+                    }
+                }
+
+                lblParola.Text = new string(parola_con_trattini);
+
+                if (lettera_corretta)
+                {
+                    lblRis_lettera_inserita.Text = "Bravo! Hai indovinato una lettera.";
+                    lettere_indovinate++;
+                }
+                else
+                {
+                    lblRis_lettera_inserita.Text = "Oops! La lettera che hai scelto non è corretta.";
+                    tentativi++;
+                }
+
+                if (!new string(parola_con_trattini).Contains("_"))
+                {
+                    game = true;
+                    controllo();
+                }
+                else if (tentativi >= num_tentativi)
+                {
+
+                    game = false;
+                    controllo();
+                }
+
+
+                
+
+                if (difficult == "Difficile" && monete >= 5 && tentativi != num_tentativi && tentativi >= 3)
+                {
+                    {
+                        for (int i = 0; i < tastiera.Length; i++)
+                        {
+                            tastiera[i].Visible = false;
+                        }
+
+                        lblLettera_inserito.Visible = false;
+                        btnOk.Visible = false;
+
+                        lblintro_extra_chance.Text = $"Sei davvero vicino alla fine e ti restano solo {num_tentativi - tentativi} tentativi! Se stai trovando difficile indovinare la parola, posso darti un piccolo aiuto. Vuoi un indizio: Sorgente (per questa volta costa 5 monete!)?";
+                        lblintro_extra_chance.Visible = true;
+                        btnExtra_chance_si.Visible = true;
+                        btnExtra_chance_no.Visible = true;
+
+                    }
+                }
+                else if (lettere_indovinate >= 3 && tentativi != num_tentativi)
+                {
+                    lblParola_completa.Visible = true;
+                    btnPC_si.Visible = true;
+                    btnPC_no.Visible = true;
+
+                    for (int i = 0; i < tastiera.Length; i++)
+                    {
+                        tastiera[i].Visible = false;
+                    }
+
+                    lblLettera_inserito.Visible = false;
+                    btnOk.Visible = false;
+
+                }
+
+                lblTentativi.Text = (num_tentativi - tentativi).ToString();
+            }
+            else
+            {
+                lblRis_lettera_inserita.Text = "Per favore inserisci una lettera";
+            }
         }
 
         private string tema_scelta(string tema)
@@ -560,13 +718,24 @@ namespace impiccato_grafic
 
         private string parola_casuale(string[] parole, string[] parole_uscite)
         {
-            int posizione = random.Next(0, 20);
-            while (parole_uscite.Contains(parole[posizione]))
+            int posizione = -1;
+            bool trovato = false;
+            while (trovato == false)
             {
                 posizione = random.Next(0, 20);
+
+                for (int i = 0; i < parole_uscite.Length; i++)
+                {
+                    if (parole_uscite[i] == null || parole[posizione] != parole_uscite[i])
+                    {
+                        trovato = true;
+                    }
+                }
             }
+
             return parole[posizione];
         }
+
 
         private string parola_da_indovina(string p)
         {
@@ -588,40 +757,306 @@ namespace impiccato_grafic
 
         private void btnPC_si_Click(object sender, EventArgs e)
         {
-            richiesta_indovina_parola.Visible = false;
-            parola_completa.Visible = true;
-        }
+            lblParola_completa.Visible = false;
+            btnPC_si.Visible = false;
+            btnPC_no.Visible = false;
 
-        private bool indovina_parola(string p)
-        {
-            string parola_provata = tbxParola_inserita.Text;
-            firstpag.Visible = false;
-            secondpag.Visible = true;
-            thirdpag.Visible = false;
-            richiesta_indovina_parola.Visible = false;
-            parola_completa.Visible = false;
-            fourthpag.Visible = false;
-            lastpag.Visible = false;
-            if (parola_provata == p)
-            {
-                return true;
-            }
-            else
-            {
-                lblRis_lettera_inserita.Text = "Oops! La parola che hai provato non è corretta. Non preoccuparti, puoi continuare a giocare! Prova a indovinare un’altra lettera o riprova a indovinare la parola!";
-                return false;
-            }
+            lblTicchetta_parola_inserito.Visible = true;
+            tbxParola_inserita.Visible = true;
+            btnParola_inserita.Visible = true;
         }
 
         private void btnNo_Click(object sender, EventArgs e)
         {
             firstpag.Visible = false;
             secondpag.Visible = false;
+
+            lblintro_extra_chance.Visible = false;
+            btnExtra_chance_si.Visible = false;
+            btnExtra_chance_no.Visible = false;
+
+            lblTicchetta_monete.Visible = false;
+            lblMonete.Visible = false;
+
             thirdpag.Visible = false;
-            richiesta_indovina_parola.Visible = false;
-            parola_completa.Visible = false;
+            lblParola_completa.Visible = false;
+            btnPC_si.Visible = false;
+            btnPC_no.Visible = false;
+
+            lblTicchetta_parola_inserito.Visible = false;
+            tbxParola_inserita.Visible = false;
+            btnParola_inserita.Visible = false;
+
             fourthpag.Visible = false;
             lastpag.Visible = true;
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            lblErrore.Visible = false;
+
+            if (lblLettera_inserito.Text != "")
+            {
+                if (!lettere_provate.Contains(lettera))
+                {
+                    lettera_inserita = lettera;
+                    lettere_provate[n_prove++] = lettera_inserita;
+                    lblLettere_provate.Text += lettera_inserita + " ";
+                    lblRis_lettera_inserita.Text = $"Hai scelto la lettera: {lettera_inserita}";
+                    indovina();
+                }
+                else
+                {
+                    lblRis_lettera_inserita.Text = "Hai già scelto questa lettera! Prova con una lettera diversa.";
+                }
+            }
+            else
+            {
+                lblRis_lettera_inserita.Text = "Per favore, scegli una lettera prima di premere OK!";
+            }
+
+            lblLettera_inserito.Text = null;
+        }
+
+        private void btnPC_no_Click(object sender, EventArgs e)
+        {
+            lblParola_completa.Visible = false;
+            btnPC_si.Visible = false;
+            btnPC_no.Visible = false;
+
+            for (int i = 0; i < tastiera.Length; i++)
+            {
+                tastiera[i].Visible = true;
+            }
+
+            lblLettera_inserito.Visible = true;
+            btnOk.Visible = true;
+
+        }
+
+        private void btnParola_inserita_Click(object sender, EventArgs e)
+        {
+            string parola_inserita = tbxParola_inserita.Text.ToLower();
+
+            if (tbxParola_inserita.Text != null && tbxParola_inserita.Text != "")
+            {
+                if (parola_inserita == parola_segreta)
+                {
+                    game = true;
+                    controllo();
+                }
+                else
+                {
+                    lblRis_lettera_inserita.Text = "Oops! La parola che hai provato non è corretta. Non preoccuparti, puoi continuare a giocare! Prova a indovinare un’altra lettera o riprova a indovinare la parola!";
+                    lblTicchetta_parola_inserito.Visible = false;
+                    tbxParola_inserita.Visible = false;
+                    btnParola_inserita.Visible = false;
+
+                    for (int i = 0; i < tastiera.Length; i++)
+                    {
+                        tastiera[i].Visible = true;
+                    }
+
+                    lblLettera_inserito.Visible = true;
+                    btnOk.Visible = true;
+                }
+            }
+            else
+            {
+                lblErrore_parola_inserita.Visible = true;
+            }
+
+            tbxParola_inserita.Text = null;
+        }
+
+        private void btnSi_Click(object sender, EventArgs e)
+        {
+            firstpag.Visible = true;
+            secondpag.Visible = false;
+
+            lblintro_extra_chance.Visible = false;
+            btnExtra_chance_si.Visible = false;
+            btnExtra_chance_no.Visible = false;
+
+            lblTicchetta_monete.Visible = false;
+            lblMonete.Visible = false;
+
+            thirdpag.Visible = false;
+
+            lblParola_completa.Visible = false;
+            btnPC_si.Visible = false;
+            btnPC_no.Visible = false;
+
+            lblTicchetta_parola_inserito.Visible = false;
+            tbxParola_inserita.Visible = false;
+            btnParola_inserita.Visible = false;
+
+            fourthpag.Visible = false;
+            lastpag.Visible = false;
+        }
+
+        private void btnIndizio_si_Click(object sender, EventArgs e)
+        {
+            lblIntro_indizi3.Visible = false;
+            btnIndizio_si.Visible = false;
+            btnIndizio_no.Visible = false;
+            lblConquista_indizio.Visible = true;
+            ckbIndizio.Visible = true;
+            btnIndizio_scelto.Visible = true;
+
+        }
+
+        private void ckbIndizio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = ckbIndizio.SelectedIndex;
+            int count = ckbIndizio.Items.Count;
+            for (int i = 0; i < count; i++)
+            {
+                if (index != i)
+                {
+                    ckbIndizio.SetItemChecked(i, false);
+                }
+            }
+        }
+
+        private void btnIndizio_scelto_Click(object sender, EventArgs e)
+        {
+            lblErrore.Text = "Per favore scegli un indizio";
+            for (int i = 0; i < ckbIndizio.Items.Count; i++)
+            {
+                if (ckbIndizio.GetItemChecked(i))
+                {
+                    indizio = ckbIndizio.Items[i].ToString();
+                }
+            }
+
+            if (indizio != null)
+            {
+                indizi.Visible = false;
+
+                lblIntro_indizi3.Visible = false;
+                btnIndizio_si.Visible = false;
+                btnIndizio_no.Visible = false;
+                lblConquista_indizio.Visible = false;
+                ckbIndizio.Visible = false;
+                btnIndizio_scelto.Visible = false;
+
+                secondpag.Visible = true;
+                for (int i = 0; i < tastiera.Length; i++)
+                {
+                    tastiera[i].Visible = true;
+                }
+
+                lblLettera_inserito.Visible = true;
+                btnOk.Visible = true;
+
+                lblErrore.Visible = false;
+
+                if (indizio.Contains("Dizionario"))
+                {
+                    if (monete - 3 < 0)
+                    {
+                        lblErrore.Text = "Ops! Non hai abbastanza monete per acquistare un indizio";
+                        lblErrore.Visible = true;
+                    }
+                    else
+                    {
+                        ind = 1;
+                        monete -= 3;
+                    }
+                }
+                else
+                {
+                    if (monete - 2 < 0)
+                    {
+                        lblErrore.Text = "Ops! Non hai abbastanza monete per acquistare un indizio";
+                        lblErrore.Visible = true;
+                    }
+                    else
+                    {
+                        ind = 2;
+                        monete -= 2;
+                    }
+                }
+                lblMonete.Text = monete.ToString();
+
+                gioco();
+            }
+            else
+            {
+                lblErrore.Visible = true;
+            }
+        }
+
+        private void btnIndizio_no_Click(object sender, EventArgs e)
+        {
+            indizi.Visible = false;
+
+            lblIntro_indizi3.Visible = false;
+            btnIndizio_si.Visible = false;
+            btnIndizio_no.Visible = false;
+            lblConquista_indizio.Visible = false;
+            ckbIndizio.Visible = false;
+            btnIndizio_scelto.Visible = false;
+
+            secondpag.Visible = true;
+            for (int i = 0; i < tastiera.Length; i++)
+            {
+                tastiera[i].Visible = true;
+            }
+
+            lblLettera_inserito.Visible = true;
+            btnOk.Visible = true;
+
+            gioco();
+        }
+
+        private void btnExtra_chance_si_Click(object sender, EventArgs e)
+        {
+            if (monete - 5 < 0)
+            {
+                lblErrore.Text = "Ops! Non hai abbastanza monete per acquistare un indizio";
+                lblErrore.Visible = true;
+            }
+            else
+            {
+                monete -= 5;
+                lblMonete.Text = monete.ToString();
+
+                for (int i = 0; i < tastiera.Length; i++)
+                {
+                    tastiera[i].Visible = true;
+                }
+
+                lblLettera_inserito.Visible = true;
+                btnOk.Visible = true;
+
+                lblintro_extra_chance.Visible = false;
+                btnExtra_chance_si.Visible = false;
+                btnExtra_chance_no.Visible = false;
+
+                sorgente();
+            }
+        }
+
+        private void btnExtra_chance_no_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < tastiera.Length; i++)
+            {
+                tastiera[i].Visible = true;
+            }
+
+            lblLettera_inserito.Visible = true;
+            btnOk.Visible = true;
+
+            lblintro_extra_chance.Visible = false;
+            btnExtra_chance_si.Visible = false;
+            btnExtra_chance_no.Visible = false;
+        }
+
+        private void lblTitle_indizi_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
